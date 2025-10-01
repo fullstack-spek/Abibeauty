@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abibeauty - Institut de Beauté & Bien-être</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d4a574 0%, #b88654 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            letter-spacing: 0.3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            font-style: italic;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .hero {
+            background: linear-gradient(to bottom, rgba(212, 165, 116, 0.1), rgba(255,255,255,1));
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            color: #b88654;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.15rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border-radius: 10px;
+            margin-top: -2rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .contact-item h3 {
+            color: #b88654;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-item p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .services {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #b88654;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .services h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4a574, transparent);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.3);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #d4a574 0%, #b88654 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            color: #b88654;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .service-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .service-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .service-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #d4a574;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4a574 0%, #b88654 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(212, 165, 116, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(212, 165, 116, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">ABIBEAUTY</div>
+        <div class="tagline">Votre Institut de Beauté & Bien-être</div>
+    </header>
+
+    <section class="hero">
+        <h2>Révélez votre beauté naturelle</h2>
+        <p>
+            Chez Abibeauty, nous vous accueillons dans un espace dédié à votre bien-être et à votre beauté. 
+            Chaque soin est personnalisé pour révéler votre éclat naturel dans une atmosphère élégante et apaisante. 
+            Notre équipe de professionnelles passionnées met son savoir-faire à votre service pour vous offrir 
+            une expérience beauté inoubliable.
+        </p>
+        <a href="#contact" class="cta-button">Prendre Rendez-vous</a>
+    </section>
+
+    <div class="contact-info" id="contact">
+        <div class="contact-item">
+            <h3>📞 Téléphone</h3>
+            <p>+229 XX XX XX XX XX</p>
+        </div>
+        <div class="contact-item">
+            <h3>📍 Adresse</h3>
+            <p>Cotonou, Bénin<br>(Indiquez votre quartier)</p>
+        </div>
+        <div class="contact-item">
+            <h3>🕐 Horaires</h3>
+            <p>Lundi - Samedi : 9h - 20h<br>Dimanche : Sur rendez-vous</p>
+        </div>
+        <div class="contact-item">
+            <h3>✉️ Email</h3>
+            <p>contact@abibeauty.com</p>
+        </div>
+    </div>
+
+    <section class="services">
+        <h2>Nos Prestations</h2>
+
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-image">💆‍♀️</div>
+                <div class="service-content">
+                    <h3>Soins Visage</h3>
+                    <p>Offrez à votre visage des soins d'exception avec nos protocoles personnalisés. Technologie moderne et gestes experts pour une peau rayonnante.</p>
+                    <ul class="service-list">
+                        <li>Nettoyage en profondeur</li>
+                        <li>Hydratation intense</li>
+                        <li>Soins anti-âge</li>
+                        <li>Traitement anti-acné</li>
+                        <li>Peeling doux</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">💅</div>
+                <div class="service-content">
+                    <h3>Beauté des Mains & Pieds</h3>
+                    <p>Des mains douces et des pieds soignés pour une élégance parfaite. Manucure et pédicure avec des produits de qualité premium.</p>
+                    <ul class="service-list">
+                        <li>Manucure classique ou spa</li>
+                        <li>Pédicure et soin des pieds</li>
+                        <li>Pose de vernis semi-permanent</li>
+                        <li>Nail art personnalisé</li>
+                        <li>Pose de capsules et gel</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">✨</div>
+                <div class="service-content">
+                    <h3>Épilation</h3>
+                    <p>Une peau douce et lisse grâce à nos techniques d'épilation professionnelles adaptées à tous les types de peau.</p>
+                    <ul class="service-list">
+                        <li>Épilation visage</li>
+                        <li>Épilation corps complet</li>
+                        <li>Épilation maillot</li>
+                        <li>Cire de qualité professionnelle</li>
+                        <li>Finitions soignées</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">💇‍♀️</div>
+                <div class="service-content">
+                    <h3>Coiffure</h3>
+                    <p>Sublimez votre chevelure avec nos coiffures tendances et soins capillaires adaptés à votre style et à la santé de vos cheveux.</p>
+                    <ul class="service-list">
+                        <li>Braids, nattes et tresses</li>
+                        <li>Tissages et perruques</li>
+                        <li>Soins capillaires profonds</li>
+                        <li>Coiffures événementielles</li>
+                        <li>Conseils personnalisés</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">🌸</div>
+                <div class="service-content">
+                    <h3>Massage & Gommage</h3>
+                    <p>Évadez-vous dans un moment de pure détente avec nos massages relaxants et nos gommages corporels régénérants.</p>
+                    <ul class="service-list">
+                        <li>Massage relaxant</li>
+                        <li>Massage tonifiant</li>
+                        <li>Gommage corps complet</li>
+                        <li>Soins hydratants</li>
+                        <li>Rituels bien-être</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">💄</div>
+                <div class="service-content">
+                    <h3>Maquillage</h3>
+                    <p>Un maquillage professionnel pour révéler votre beauté naturelle. Idéal pour vos événements spéciaux et séances photos.</p>
+                    <ul class="service-list">
+                        <li>Maquillage jour</li>
+                        <li>Maquillage soirée</li>
+                        <li>Maquillage mariée</li>
+                        <li>Maquillage événementiel</li>
+                        <li>Conseils beauté personnalisés</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Abibeauty - Tous droits réservés</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Institut de Beauté & Bien-être à Cotonou</p>
+    </footer>
+</body>
+</html>
