@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abi Beauty - Institut de Beauté & Bien-être</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            padding: 20px 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff6b35;
+            letter-spacing: 3px;
+        }
+
+        .tagline {
+            font-size: 12px;
+            color: #ccc;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23000" width="1200" height="800"/><path fill="%23ff6b35" opacity="0.1" d="M0 400 Q300 200 600 400 T1200 400 V800 H0 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            margin-bottom: 20px;
+            color: #ff6b35;
+            font-weight: 300;
+            letter-spacing: 8px;
+        }
+
+        .hero .subtitle {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fff;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #ccc;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 50px;
+            background: transparent;
+            color: #ff6b35;
+            text-decoration: none;
+            border: 2px solid #ff6b35;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background: #ff6b35;
+            color: #000;
+        }
+
+        /* Contact Bar */
+        .contact-bar {
+            background: #0a0a0a;
+            padding: 40px 0;
+            border-top: 1px solid #ff6b35;
+            border-bottom: 1px solid #ff6b35;
+        }
+
+        .contact-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 0 40px;
+            text-align: center;
+        }
+
+        .contact-item h3 {
+            color: #ff6b35;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .contact-item p {
+            color: #ccc;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        #about {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 48px;
+            color: #ff6b35;
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            color: #ccc;
+            line-height: 2;
+            margin-bottom: 20px;
+        }
+
+        /* Services Section */
+        #services {
+            padding: 120px 40px;
+            background: #0a0a0a;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .services-header h2 {
+            font-size: 48px;
+            color: #ff6b35;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 100px;
+            align-items: center;
+        }
+
+        .service-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .service-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.3) 0%, transparent 100%);
+        }
+
+        .service-content h3 {
+            font-size: 36px;
+            color: #ff6b35;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .service-content p {
+            font-size: 16px;
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .service-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .service-list li {
+            color: #ccc;
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .service-list li::before {
+            content: '—';
+            color: #ff6b35;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .contact-header h2 {
+            font-size: 48px;
+            color: #ff6b35;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            background: transparent;
+            border: 1px solid #333;
+            border-radius: 0;
+            color: #fff;
+            font-size: 15px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #ff6b35;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        .contact-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .info-block h3 {
+            color: #ff6b35;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .info-block p {
+            color: #ccc;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #ff6b35;
+        }
+
+        footer p {
+            color: #666;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .service-item {
+                grid-template-columns: 1fr;
+            }
+
+            .service-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+                letter-spacing: 4px;
+            }
+
+            .hero .subtitle {
+                font-size: 18px;
+            }
+
+            .nav-links {
+                gap: 20px;
+                font-size: 12px;
+            }
+
+            .services-header h2,
+            .contact-header h2,
+            .about-content h2 {
+                font-size: 32px;
+            }
+
+            .service-content h3 {
+                font-size: 28px;
+            }
+
+            .service-image {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div>
+                <div class="logo">ABI BEAUTY</div>
+                <div class="tagline">L'Institut de Beauté & Bien-être</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#services">Prestations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1>ABI BEAUTY</h1>
+            <p class="subtitle">Votre destination beauté & bien-être</p>
+            <p>Chez Abi Beauty, chaque détail est pensé pour révéler votre éclat naturel dans une atmosphère élégante et apaisante. Notre institut vous accueille dans un cadre raffiné, où professionnalisme rime avec douceur et savoir-faire.</p>
+            <a href="#contact" class="btn">Prendre Rendez-vous</a>
+        </div>
+    </section>
+
+    <!-- Contact Bar -->
+    <div class="contact-bar">
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h3>Téléphone</h3>
+                <p>+33 1 23 45 67 89</p>
+            </div>
+            <div class="contact-item">
+                <h3>Adresse</h3>
+                <p>123 Rue de la Beauté<br>75000 Paris, France</p>
+            </div>
+            <div class="contact-item">
+                <h3>Horaires d'ouverture</h3>
+                <p>Lundi : 14h - 20h<br>
+                Mardi - Samedi : 9h - 20h<br>
+                Dimanche : 9h - 17h</p>
+            </div>
+            <div class="contact-item">
+                <h3>Email</h3>
+                <p>contact@abibeauty.fr</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-content">
+            <h2>À Propos</h2>
+            <p>Bienvenue chez Abi Beauty, votre institut dédié à votre bien-être et à votre beauté. Dans notre espace élégant et apaisant, nous vous proposons une expérience beauté complète, alliant soins esthétiques modernes et rituels de bien-être sur mesure.</p>
+            <p>Notre équipe de professionnelles qualifiées met son expertise à votre service pour sublimer votre beauté naturelle. Chaque soin est personnalisé, chaque geste est précis, et chaque moment passé chez nous devient une parenthèse de détente absolue.</p>
+            <p>Chez Abi Beauty, nous croyons que la beauté rayonne de l'intérieur. C'est pourquoi nous prenons soin de vous dans votre globalité, pour que vous ressortiez transformée, épanouie et confiante.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="services-header">
+            <h2>Nos Prestations</h2>
+        </div>
+        <div class="services-container">
+            
+            <!-- Service 1 -->
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 500'%3E%3Crect fill='%231a1a1a' width='600' height='500'/%3E%3Ctext x='50%25' y='50%25' fill='%23ff6b35' font-size='24' text-anchor='middle' dominant-baseline='middle'%3ESoins Visage%3C/text%3E%3C/svg%3E" style="width: 100%; height: 100%; object-fit: cover;" alt="Soins Visage">
+                </div>
+                <div class="service-content">
+                    <h3>Soins Visage</h3>
+                    <p>Nos soins associent technologie moderne et gestes experts pour nettoyer, hydrater, lisser et illuminer la peau, tout en vous offrant un véritable moment de détente.</p>
+                    <ul class="service-list">
+                        <li>Hydrafacial – Nettoyage en profondeur, hydratation intense</li>
+                        <li>BB Glow – Effet bonne mine immédiat, teint unifié</li>
+                        <li>Peeling – Régénération et affinage du grain de peau</li>
+                        <li>Soin anti-acné – Purifiant et apaisant</li>
+                        <li>Dermaplaning – Visage lisse et lumineux</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 500'%3E%3Crect fill='%231a1a1a' width='600' height='500'/%3E%3Ctext x='50%25' y='50%25' fill='%23ff6b35' font-size='24' text-anchor='middle' dominant-baseline='middle'%3EManucure %26 Pédicure%3C/text%3E%3C/svg%3E" style="width: 100%; height: 100%; object-fit: cover;" alt="Manucure & Pédicure">
+                </div>
+                <div class="service-content">
+                    <h3>Beauté des mains et des pieds</h3>
+                    <p>Vos mains et vos pieds méritent toute notre attention. Nous vous proposons des soins complets, alliant esthétique, hygiène et confort.</p>
+                    <ul class="service-list">
+                        <li>Soins classiques ou spa avec gommage</li>
+                        <li>Pose de vernis simple ou semi-permanent</li>
+                        <li>Pose de capsules ou gel – ongles élégants</li>
+                        <li>Soin réparateur & hydratant</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 500'%3E%3Crect fill='%231a1a1a' width='600' height='500'/%3E%3Ctext x='50%25' y='50%25' fill='%23ff6b35' font-size='24' text-anchor='middle' dominant-baseline='middle'%3EMassage %26 Gommage%3C/text%3E%3C/svg%3E" style="width: 100%; height: 100%; object-fit: cover;" alt="Massage">
+                </div>
+                <div class="service-content">
+                    <h3>Gommage & Massage du corps</h3>
+                    <p>Offrez à votre peau et à votre esprit une parenthèse de douceur absolue.</p>
+                    <ul class="service-list">
+                        <li>Gommage corporel – exfolie et purifie la peau</li>
+                        <li>Massage relaxant – libère les tensions</li>
+                        <li>Massage tonifiant – réharmonise le corps</li>
+                        <li>Massage aux pierres chaudes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 500'%3E%3Crect fill='%231a1a1a' width='600' height='500'/%3E%3Ctext x='50%25' y='50%25' fill='%23ff6b35' font-size='24' text-anchor='middle' dominant-baseline='middle'%3EÉpilation%3C/text%3E%3C/svg%3E" style="width: 100%; height: 100%; object-fit: cover;" alt="Épilation">
+                </div>
+                <div class="service-content">
+                    <h3>Épilation à la cire</h3>
+                    <p>L'épilation devient un vrai soin beauté. Nous utilisons des cires de qualité pour une peau douce, nette et respectée.</p>
+                    <ul class="service-list">
+                        <li>Épilation visage, aisselles, bras, jambes</li>
+                        <li>Maillot simple ou intégral</li>
+                        <li>Adaptée à tous les types de peau</li>
+                        <li>Finitions soignées, résultats durables</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 500'%3E%3Crect fill='%231a1a1a' width='600' height='500'/%3E%3Ctext x='50%25' y='50%25' fill='%23ff6b35' font-size='24' text-anchor='middle' dominant-baseline='middle'%3EMaquillage%3C/text%3E%3C/svg%3E" style="width: 100%; height: 100%; object-fit: cover;" alt="Maquillage">
+                </div>
+                <div class="service-content">
+                    <h3>Maquillage</h3>
+                    <p>Une séance photo ? Un événement ? Notre maquilleuse professionnelle saura faire ressortir le meilleur de vous-même.</p>
+                    <p>L'objectif : obtenir un teint parfait sans en faire trop. Votre satisfaction est de voir votre visage s'illuminer et vos yeux briller lorsque vous vous découvrez.</p>
+                </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 500'%3E%3Crect fill='%231a1a1a' width='600' height='500'/%3E%3Ctext x='50%25' y='50%25' fill='%23ff6b35' font-size='24' text-anchor='middle' dominant-baseline='middle'%3ECoiffure%3C/text%3E%3C/svg%3E" style="width: 100%; height: 100%; object-fit: cover;" alt="Coiffure">
+                </div>
+                <div class="service-content">
+                    <h3>Coiffure</h3>
+                    <p>Vos cheveux sont entre de bonnes mains. Coiffures tendances, soignées et adaptées à votre style.</p>
+                    <ul class="service-list">
+                        <li>Braids, nattes, twists, cornrows, locks</li>
+                        <li>Soins capillaires nourrissants</li>
+                        <li>Confection et pose de perruque</li>
+                        <li>Tissages et rajout naturels</li>
+                        <li>Conseils personnalisés</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-header">
+            <h2>Contactez-nous</h2>
+        </div>
+        <div class="contact-wrapper">
+            <form class="contact-form">
+                <input type="text" placeholder="Votre nom" required>
+                <input type="email" placeholder="Votre email" required>
+                <input type="tel" placeholder="Votre téléphone">
+                <textarea placeholder="Votre message" required></textarea>
+                <button type="submit" class="btn">Envoyer</button>
+            </form>
+            <div class="contact-info-list">
+                <div class="info-block">
+                    <h3>Adresse</h3>
+                    <p>123 Rue de la Beauté<br>75000 Paris, France</p>
+                </div>
+                <div class="info-block">
+                    <h3>Téléphone</h3>
+                    <p>+33 1 23 45 67 89</p>
+                </div>
+                <div class="info-block">
+                    <h3>Email</h3>
+                    <p>contact@abibeauty.fr</p>
+                </div>
+                <div class="info-block">
+                    <h3>Horaires</h3>
+                    <p>Lundi : 14h - 20h<br>
+                    Mardi - Samedi : 9h - 20h<br>
+                    Dimanche : 9h - 17h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Abi Beauty. Tous droits réservés. Votre beauté, notre passion.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Nous vous contacterons bientôt.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
